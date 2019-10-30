@@ -1,0 +1,23 @@
+{
+    "name": "kylestev/runelite-settings-php",
+    "description": "Parses RuneLite settings files",
+    "type": "library",
+    "require": {
+        "php": "^7.2",
+        "tightenco/collect": "^6.4",
+        "nesbot/carbon": "^2.25",
+        "doctrine/annotations": "^1.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kyle Stevenson",
+            "email": "kyle@kylestevenson.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kylestev\\RuneLite\\": "src/"
+        }
+    }
+}
