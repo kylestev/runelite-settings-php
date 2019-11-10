@@ -23,6 +23,20 @@ class FarmingWorld
         $this->regions = new Collection();
     }
 
+    public function getRegions(): Collection
+    {
+        return $this->regions;
+    }
+
+    public function getRegion(int $regionId)
+    {
+        if (!$this->regions->has($regionId)) {
+            throw new RegionNotFound($regionId);
+        }
+
+        return $this->regions->get($regionId);
+    }
+
     public function addRegion(int $regionId, string $name, $patches)
     {
         $this->regions->put($regionId, compact('regionId', 'name', 'patches'));
@@ -34,11 +48,7 @@ class FarmingWorld
      */
     public function findPatch(int $regionId, int $varIndex)
     {
-        if (!$this->regions->has($regionId)) {
-            throw new RegionNotFound($regionId);
-        }
-
-        $region = $this->regions[$regionId];
+        $region = $this->getRegion($regionId);
         $regionPatch = (new Collection($region['patches']))->firstWhere('varIndex', $varIndex);
         if (is_null($regionPatch)) {
             throw new FarmingPatchNotFound($regionId, $varIndex);
