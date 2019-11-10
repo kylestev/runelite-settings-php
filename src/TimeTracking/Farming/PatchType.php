@@ -14,7 +14,7 @@ class PatchType
     public function __construct(string $name, array $cases)
     {
         $this->name = $name;
-        $this->cases = collect($cases);
+        $this->cases = new Collection($cases);
     }
 
     public function findCase(int $varbitValue): ?PatchVarbitCase

@@ -19,7 +19,7 @@ class RuneLiteSettings
 
     public function group(string $name): Collection
     {
-        return $this->groups()->get($name, collect());
+        return $this->groups()->get($name, new Collection());
     }
 
     public function groups(): Collection

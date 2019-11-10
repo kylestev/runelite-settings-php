@@ -37,7 +37,7 @@ class PatchVarbitCase
         $this->crop = $crop;
         $this->rangeStart = $rangeStart;
         $this->rangeEnd = $rangeEnd;
-        $this->expressions = collect($expressions);
+        $this->expressions = new Collection($expressions);
         $this->calc = $calc;
     }
 

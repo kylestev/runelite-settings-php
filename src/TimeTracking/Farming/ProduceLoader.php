@@ -10,7 +10,7 @@ class ProduceLoader
         $decoded = json_decode($contents);
         $contents = null;
 
-        return collect($decoded)
+        return (new Collection($decoded))
             ->map(function ($crop) {
                 return new Crop(
                     $crop->name,

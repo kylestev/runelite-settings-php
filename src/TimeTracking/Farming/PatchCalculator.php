@@ -40,13 +40,13 @@ class PatchCalculator
 
     public function simplify(array $expressions)
     {
-        $exprs = collect($expressions);
+        $exprs = new Collection($expressions);
         if ($exprs->count() >= 3) {
             $exprs = $this->reduceConstantExpressions($expressions);
         }
         if ($exprs->filter(function ($x) { return $x->isType(VarbitExpression::class); })->isEmpty()) {
             $evald = $this->evaluate($exprs->toArray(), -43594);
-            return collect([
+            return new Collection([
                 new IntLiteralExpression($evald)
             ]);
         }
@@ -107,7 +107,7 @@ class PatchCalculator
 
     private function reduceConstantExpressions(array $expressions): Collection
     {
-        $exprs = collect();
+        $exprs = new Collection();
         $numExpressions = count($expressions);
         if ($numExpressions >= 3) {
             $i = 0;
