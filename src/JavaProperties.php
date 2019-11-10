@@ -18,7 +18,7 @@ class JavaProperties implements ArrayAccess
 
     public function __construct(array $lines)
     {
-        $this->properties = collect();
+        $this->properties = new Collection();
         foreach ($lines as $line) {
             $line = trim($line);
             if (!$line) {

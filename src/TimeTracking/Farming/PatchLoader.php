@@ -29,9 +29,9 @@ class PatchLoader
         $decoded = json_decode($contents);
         $contents = null;
 
-        return collect($decoded)
+        return (new Collection($decoded))
             ->map(function ($x) {
-                $cases = collect($x->cases)
+                $cases = (new Collection($x->cases))
                     ->map(function ($y) {
                         return new PatchVarbitCase(
                             $y->state,
@@ -39,7 +39,7 @@ class PatchLoader
                             $y->varps->start,
                             $y->varps->end,
                             $this->calc->simplify(
-                                collect($y->expression)
+                                (new Collection($y->expression))
                                     ->map(function ($z) {
                                         return $this->factory->make($z[0], $z[1]);
                                     })

@@ -20,7 +20,7 @@ class FarmingWorld
     {
         $this->produce = $produce;
         $this->patches = $patches;
-        $this->regions = collect();
+        $this->regions = new Collection();
     }
 
     public function addRegion(int $regionId, string $name, $patches)
@@ -31,7 +31,7 @@ class FarmingWorld
     public function findPatch(int $regionId, int $varIndex)
     {
         $region = $this->regions[$regionId];
-        $regionPatch = collect($region['patches'])->firstWhere('varIndex', $varIndex);
+        $regionPatch = (new Collection($region['patches']))->firstWhere('varIndex', $varIndex);
         return $this->patches->firstWhere('name', $regionPatch->patchType);
     }
 }
