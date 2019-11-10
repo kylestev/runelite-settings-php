@@ -82,4 +82,9 @@ class JavaProperties implements ArrayAccess
     {
         return $this->properties->has($key);
     }
+
+    public static function fromText(string $fileContents)
+    {
+        return new static(explode("\n", $fileContents));
+    }
 }
