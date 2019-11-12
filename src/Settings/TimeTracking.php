@@ -41,6 +41,8 @@ class TimeTracking extends ModuleSettings
 
     private function getVarbitSetting(string $value)
     {
+        if (strpos($value, '{') !== false) return null;
+        if (strpos($value, '[') !== false) return null;
         if (strpos($value, '\\:') !== false) {
             $parts = explode('\\:', $value, 2);
             $varbitValue = (int) $parts[0];
